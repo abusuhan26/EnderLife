@@ -66,7 +66,7 @@
                 navigator.clipboard.writeText
             ("play.enderlife.online");
                 }
-            $(document).ready(function() {})
+            $(document).ready(function() {
             $('.main1_ipcopier').click(function() {
                 var popup = $('<div>', { class: 'main1_popup' })
                 .append($('<h3 class="copy_confirm">').text('Copied IP to clipboard'))
@@ -74,6 +74,7 @@
                 setTimeout(function() {
                 popup.remove();
                 }, 1000);
+              }); 
             });
 
             const main1_ipcopier = document.querySelector(".main1_ipcopier");
