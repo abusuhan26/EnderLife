@@ -683,7 +683,7 @@ body {
 .main3_join_div {
     display: flex;
     flex-direction: column;
-    width: 20rem;
+    width: 24rem;
     height: 8rem;
     background-color: var(--background2);
     border-radius: var(--roundness);
@@ -796,7 +796,7 @@ body {
         width: 100%;
     }
     .main3_join_div {
-        min-width: 20rem;
+        min-width: 24rem;
         min-height: 9rem;
     }
     .main3_join_content_div {
