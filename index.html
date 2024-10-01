@@ -60,12 +60,13 @@
             <br>
             <span class="main1_ipcopier_text2">Click to copy</span>
           </button>
+          <script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
           <script>
             function copyText() {
                 navigator.clipboard.writeText
             ("play.enderlife.online");
                 }
-            $(document).ready(function() {
+            $(document).ready(function() {})
             $('.main1_ipcopier').click(function() {
                 var popup = $('<div>', { class: 'main1_popup' })
                 .append($('<h3 class="copy_confirm">').text('Copied IP to clipboard'))
@@ -74,6 +75,21 @@
                 popup.remove();
                 }, 1000);
             });
+
+            const main1_ipcopier = document.querySelector(".main1_ipcopier");
+            
+            main1_ipcopier.addEventListener("click", () => {
+              confetti({
+                particleCount: 200,
+                spread: 90,
+                origin: { x: 1, y: 0.9 },
+               });
+
+               confetti({
+                particleCount: 200,
+                spread: 90,
+                origin: { x: 0, y: 0.9 },
+              });
             });
         </script>
         </div>
