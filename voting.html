@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EnderLife Network</title>
+    <link rel="icon" type="image/png" href="media/favicon.png">
+    <link href="https://fonts.bunny.net/css?family=Space+Grotesk:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styles */
+        body {
+            background-image: url('media/bg.png'); /* Set your custom background image */
+            background-size: cover; /* Cover the entire background */
+            background-position: center; /* Center the background image */
+            background-repeat: no-repeat; /* Prevent repeating the background */
+            font-family: 'Space Grotesk', sans-serif; /* Apply the Space Grotesk font */
+            font-weight: bolder;
+            color: white; /* Set text color to white */
+            margin: 0;
+            height: 150vh; /* Make sure it takes full height */
+            display: flex;
+            flex-direction: column;
+            position: relative; /* To position the topvoter section */
+        }
+
+        /* Header Styles */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(58, 58, 58, 0.5); /* Slight opacity for the header */
+            padding: 20px;
+        }
+
+        /* Logo and Navigation Wrapper */
+        .logo-nav {
+            display: flex;
+            align-items: center;
+        }
+
+        /* Logo in the Header */
+        header img {
+            height: 50px;
+            margin-right: 20px;
+        }
+
+        /* Navigation Styles */
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        /* Navigation Links */
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px; /* Add padding to the links */
+            transition: color 0.3s, background-color 0.3s, transform 0.3s; /* Include transform in transition */
+        }
+
+        /* Hover Effect for Navigation Links */
+        nav a:hover {
+            color: rgb(0, 175, 0); /* Change to green on hover */
+            transform: translateY(-5px) scale(1.1); /* Move up and scale slightly */
+            transition: transform 0.3s ease; /* Smooth transition for the scale effect */
+        }
+
+        /* Join Us Button */
+        .join-btn {
+            background-color: transparent;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            border: 2px solid rgb(0, 252, 0); /* Green border for the button */
+            transition: background-color 0.3s, color 0.3s, transform 0.3s; /* Include transform in transition */
+        }
+
+        /* Hover Effect for Join Us Button */
+        .join-btn:hover {
+            background-color: rgb(0, 173, 0); /* Button turns green on hover */
+            color: white;
+            transform: translateY(-5px) scale(1.1); /* Move up and scale slightly */
+            transition: transform 0.3s ease; /* Smooth transition for the scale effect */
+        }
+
+        /* Voting Buttons Section */
+        .voting-buttons {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: auto;
+        }
+
+        /* Individual Voting Button */
+        .vote-button {
+            background-color: rgb(72, 72, 72); /* Button color */
+            color: white; /* Text color */
+            padding: 10px 20px; /* Button padding */
+            margin: 10px; /* Space between buttons */
+            border-radius: 10px; /* Round the corners */
+            transition: background-color 0.3s, transform 0.3s, opacity 0.3s; /* Smooth transitions for color, scale, and opacity */
+            width: 370px; /* Set a fixed width */
+            height: 70px; /* Set button height */
+            text-align: center; /* Center text */
+        }
+
+        /* Hover Effect for Voting Buttons */
+        .vote-button:hover {
+            background-color: rgb(36, 29, 29); /* Change color on hover */
+            transform: scale(1.05);
+            border-radius: 10px;
+            opacity: 0.9;
+        }
+
+        /* Topvoter Section */
+        .topvoter-section {
+            position: absolute; /* Absolute positioning */
+            right: 20px; /* Align to the right */
+            top: 40%; /* Center vertically */
+            transform: translateY(-50%); /* Offset for true vertical centering */
+            background-color: rgba(255, 255, 255, 0.1); /* Almost transparent white background */
+            padding: 20px; /* Padding around the content */
+            border-radius: 10px; /* Rounded corners */
+            backdrop-filter: blur(5px); /* Slight blur effect */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
+        }
+
+        .content-header {
+            text-align: center;
+            margin-bottom: 20px;
+            color: white; /* Text color */
+        }
+
+        .topvoters {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .voterrow {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: rgba(68, 68, 68, 0.3); /* Slightly transparent */
+            border-radius: 8px;
+            width: fit-content; /* Set a width for the voter rows */
+            height: 55px;
+            position: relative; /* For positioning the shiny effect */
+            overflow: hidden; /* Prevent overflowing */
+            transition: transform 0.3s; /* Smooth transition */
+        }
+
+        .voterrow:hover {
+            transform: scale(1.05); /* Slightly enlarge on hover */
+        }
+
+        .fa-trophy {
+            font-size: 2em;
+            color: gold;
+            margin-right: 20px;
+        }
+
+        .playerposition {
+            font-size: 1.2em;
+            margin-right: 20px;
+            color: white; /* Set text color to white */
+        }
+
+        .playerhead {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background-size: cover;
+            margin-right: 20px;
+        }
+
+        .playername {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-right: 10px; /* Space between name and votes */
+            position: relative; /* For shiny effect */
+            z-index: 1; /* Bring to the front */
+            transition: linear 0.3s; /* Smooth transition */
+            color: white; /* Set text color to white */
+        }
+
+        .playervotes {
+            margin-left: 20px;
+            color: white; /* Set text color to white */
+        }
+
+        /* Shiny Effect on Hover */
+        .voterrow:hover .playername {
+            background: linear-gradient(60deg, rgb(0, 0, 0), rgb(0, 0, 0));
+            background-clip: text; /* Clip background to text */
+        }
+
+        /* Gold, Silver, Bronze Hover Backgrounds */
+        .topv1:hover {
+            background: linear-gradient(60deg, rgba(166, 141, 0, 0.89), rgba(255, 255, 0, 0.8));
+        }
+
+        .topv2:hover {
+            background: linear-gradient(60deg, rgba(192, 192, 192, 0.8), rgba(211, 211, 211, 0.8));
+        }
+
+        .topv3:hover {
+            background: linear-gradient(60deg, rgba(204, 134, 64, 0.8), rgba(255, 215, 0, 0.8));
+        }
+
+        /* Centering the footer */
+        .copyright_div {
+            text-align: center; /* Center the text horizontally */
+            padding: 20px; /* Add some padding for spacing */
+            background-color: rgb(0, 0, 0); /* Optional: add background for visibility */
+        }
+
+        /* Style for the copyright link */
+        .copyright {
+            color: rgb(145, 145, 145); /* Set text color to white */
+            text-decoration: wavy; /* Remove underline from link */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-nav">
+            <img src="media/logo_small.png" alt="Logo"> <!-- Replace with your logo path -->
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="index.html">Wiki</a>
+                <a href="index.html">Community</a>
+                <a href="index.html">About Us</a>
+            </nav>
+        </div>
+        <a href="index.html" class="join-btn">Join Us!</a>
+    </header>
+    
+    <div class="voting-buttons">
+        <a href="https://voting-link-1.com" class="vote-button">Vote link 1</a>
+        <a href="https://voting-link-2.com" class="vote-button">Vote link 2</a>
+        <a href="https://voting-link-3.com" class="vote-button">Vote link 3</a>
+        <a href="https://voting-link-4.com" class="vote-button">Vote link 4</a>
+        <a href="https://voting-link-5.com" class="vote-button">Vote link 5</a>
+        <a href="https://voting-link-6.com" class="vote-button">Vote link 6</a>
+        <a href="https://voting-link-7.com" class="vote-button">Vote link 7</a>
+        <a href="https://voting-link-8.com" class="vote-button">Vote link 8</a>
+        <a href="https://voting-link-9.com" class="vote-button">Vote link 9</a>
+        <a href="https://voting-link-10.com" class="vote-button">Vote link 10</a>
+        <a href="https://voting-link-11.com" class="vote-button">Vote link 11</a>
+        <a href="https://voting-link-12.com" class="vote-button">Vote link 12</a>
+    </div>
+
+    <div class="topvoter-section">
+        <h2 class="content-header">Topvoter Competition Winners</h2>
+        <div class="topvoters">
+            <div class="voterrow topv1">
+                <div class="playerhead" style="background-image: url('media/player1.png');"></div>
+                <div class="playerposition">1st</div>
+                <div class="playername">Md_Abu_Suhan</div>
+                <div class="playervotes">100 Votes </div>
+                <i class="fa fa-trophy" style="font-size:48px;color: rgb(210, 177, 67); margin-left: 10px;"></i>
+            </div>
+            <div class="voterrow topv2">
+                <div class="playerhead" style="background-image: url('media/player2.png');"></div>
+                <div class="playerposition">2nd</div>
+                <div class="playername">Player2</div>
+                <div class="playervotes">80 Votes </div>
+                <i class="fa fa-trophy" style="font-size:40px;color: rgba(145, 144, 149); margin-left: 10px;"></i>
+            </div>
+            <div class="voterrow topv3">
+                <div class="playerhead" style="background-image: url('media/player3.png');"></div>
+                <div class="playerposition">3rd</div>
+                <div class="playername">Player3</div>
+                <div class="playervotes">60 Votes</div>
+                <i class="fa fa-trophy" style="font-size:32px; color: rgba(206, 137, 70); margin-left: 10px;"></i>                
+            </div>
+            <!-- Add more voter rows as needed -->
+        </div>
+    </div>
+
+    <footer class="copyright_div">
+        <a href="" class="copyright">Made by - Md Abu Suhan 💙 1/10/2024<br>© EnderLife Network (2024)<br>EnderLife Network is in no way affiliated with Mojang, AB. Nor should it be considered a company endorsed by Mojang, AB.<br>In case of questions or issues, do not contact Mojang, AB, but please contact us on Discord</a>
+    </footer>
+</body>
+</html>
